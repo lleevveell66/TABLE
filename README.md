@@ -195,6 +195,6 @@ Of course, there is always a bit of risk when taking such drastic pro-active mea
 * You could just use iptables (or other tools) to watch for all port scans, but beware that SYN packets are much more easily spoofed than completed TCP socket connections.  Still... these connections can also be spoofed.  MAKE A GOOD WHITELIST!  Include uplinks through your provider(s) in it.  
 * It is highly recommended that you never take counter-offensive measures.  Do not taunt, do not back-hack nor scan.   It should be enough to know that some automaed bot in some subnet found you.   If you begin to provoke them, you will eventually experience much more trouble than this solution can protect you from.  
 * The determination of subnet is "precise enough".  But, beware that sometimes these subnets will contain more than one country. The TABLE scripts do not check the entire subnet.  Contrarily, only one IP address in that subnet is checked, and then the assumption is made that the rest of that subnet also originates in that country.  This is a bad assumption and why this is being called "ham-fisted".  But, it does work well when you care less about sharing services to the world.
-
+* This solution may not compete with a true hardware IPS in speed.  The timing from detection to prevention varies widely based on system loads and network timing.  It has usually come in under a minute from attack to blocking for our implementation, though.
 
 EOT
