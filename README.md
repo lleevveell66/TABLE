@@ -146,14 +146,14 @@ You will need the following installed to duplicate this project, although much s
 ## Build Your Own:
 [Table of Contents](#table-of-contents)
 
-We will walk you through an implementation of this, here.  All of the scripts are very simple.  Hate Perl?  Port it to Python and bow to your Indentation Overlords.   Big firewalld fan boi?  Easy peasy to customize for your needs.
+We will walk you through an implementation of TABLE.  All of the scripts are very simple.  Hate Perl?  Port it to Python and bow to your Indentation Overlords.   Big firewalld fan boi?  Easy peasy to customize for your needs.
 
 I only run RHEL variants in my environment, so you are going to get "the RedHat way".  If you are not capable of translating things into apt, pkg, etc., then you maybe should not be trying to implement this solution quite yet.
 
 ### Hardware:
 [Table of Contents](#table-of-contents)
 
-Again, the more *nix servers participating in this distributed solution, the better.  And, basic segregation of the network is always recommended, but not essential for this to function.  We will presume you have at least four (4) servers stood up for this example:
+Again, the more *nix servers participating in this distributed solution, the better.  Basic segregation of the network is always recommended, but not essential for this to function.  We will presume you have stood up at least four (4) servers for this example:
 
 * TABLE Server
 * Server 1 on your DMZ
