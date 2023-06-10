@@ -186,8 +186,8 @@ All other connectivity on my network is fine.
 
 Of course, there is always a bit of risk when taking such drastic pro-active measures.  Here are some points to keep in mind:
 
-* You could just use iptables (or other tools) to watch for all port scans, but beware that SYN packets are much more easily spoofed than completed socket connections in TCP.  Still... these connection can also be spoofed.  MAKE A GOOD WHITELIST!  Include uplinks through your provider(s) in it.
-* It is very highly recommended that you never take counter-offensive measures.  Do not taunt, do not back-hack nor scan.   It should be enough to know that some automaed bot in some subnet found you.   If you begin to provoke them, you will eventually experience much more trouble than this solution can protect you from.
+* You could just use iptables (or other tools) to watch for all port scans, but beware that SYN packets are much more easily spoofed than completed TCP socket connections.  Still... these connections can also be spoofed.  MAKE A GOOD WHITELIST!  Include uplinks through your provider(s) in it.  
+* It is highly recommended that you never take counter-offensive measures.  Do not taunt, do not back-hack nor scan.   It should be enough to know that some automaed bot in some subnet found you.   If you begin to provoke them, you will eventually experience much more trouble than this solution can protect you from.  
 
 
 EOT
