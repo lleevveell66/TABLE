@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="css/github.css"> 
 
 <h1 align="center">
-  <img src="images/TableLogo.png" alt="TABLE Logo" width="75%" align="middle">
+  <img src="images/TableLogo.png" alt="TABLE Logo" width="100%" align="middle">
 </h1>
 
 A distributed, ham-fisted, attack sensoring, IPS/IDS/firewall solution.  Take your bandwidth back.<br>
@@ -41,8 +41,13 @@ Network scanning and attacks have proliferated so much that the traffic generate
 We will refer to the following diagrams for this explanation:
 
 <h1 align="center"> 
-  <img src="images/TableDiagram_Scenario1.png" alt="TABLE Scenario 1" width="50%" align="middle">
-  <img src="images/TableDiagram_Scenario2.png" alt="TABLE Scenario 2" width="50%" align="middle">
+  <figure>
+    <img src="images/TableDiagram_Scenario1.png" alt="TABLE Scenario 1" width="50%" align="middle">
+    <figcaption>TABLE Scenario 1</figcaption>
+  </figure>
+  <figure>
+    <img src="images/TableDiagram_Scenario2.png" alt="TABLE Scenario 2" width="50%" align="middle">
+    <figcaption>TABLE Scenario 2</figcaption>
 </h1> 
 
 ### Attack Scenarios:
