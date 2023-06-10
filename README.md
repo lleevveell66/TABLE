@@ -172,6 +172,10 @@ If you do not use/like ipset or iptables, this file is easily massaged to utiliz
 ## Real World Study
 [Table of Contents](#table-of-contents)
 
+<h1 align="center">
+  <img src="images/LAVA_Page_Reset_10.png" alt="TABLE Study 10" width="100%" align="middle">
+</h1>
+
 A real-world study of the efficiency of the TABLE solution is included, here.
 
 Write up my testing, here.   Include all the screenshots of LAVA charts.
