@@ -40,15 +40,17 @@ Network scanning and attacks have proliferated so much that the traffic generate
 
 We will refer to the following diagrams for this explanation:
 
-<h1 align="center"> 
+<h3 align="center"> 
   <figure>
     <img src="images/TableDiagram_Scenario1.png" alt="TABLE Scenario 1" width="50%" align="middle">
     <figcaption>TABLE Scenario 1</figcaption>
   </figure>
+</h3>
+<h3 align="center"> 
   <figure>
     <img src="images/TableDiagram_Scenario2.png" alt="TABLE Scenario 2" width="50%" align="middle">
     <figcaption>TABLE Scenario 2</figcaption>
-</h1> 
+</h3> 
 
 ### Attack Scenarios:
 
