@@ -43,10 +43,10 @@ We will refer to the following diagrams for this explanation:
 <h4 align="center"> 
 <table cellpadding="3" cellspacing="3" border="0">
 <tr><td>
-    <img src="images/TableDiagram_Scenario1.png" alt="TABLE Scenario 1" width="50%" align="middle"><br>
+    <img src="images/TableDiagram_Scenario1.png" alt="TABLE Scenario 1" width="100%" align="middle"><br>
     TABLE Scenario 1
 </td><td>
-    <img src="images/TableDiagram_Scenario2.png" alt="TABLE Scenario 2" width="50%" align="middle"><br>
+    <img src="images/TableDiagram_Scenario2.png" alt="TABLE Scenario 2" width="100%" align="middle"><br>
     TABLE Scenario 2
 </td></tr>
 </table>
