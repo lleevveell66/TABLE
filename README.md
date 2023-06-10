@@ -218,6 +218,7 @@ Prepare some log files for writing by apache user:
 ```
   touch /var/log/table.log /var/log/blocking.log
   chmod 644 /var/log/table.log /var/log/blocking.log
+  chown apache:apache /var/log/table.log /var/log/blocking.log 
 ```
 
 Put the table_activity.cgi script into place:
@@ -225,7 +226,7 @@ Put the table_activity.cgi script into place:
   mkdir -p /var/www/html/TABLE/
   # Copy the table_activity.cgi from this repo into /var/www/html/TABLE/
   chmod 755 /var/www/html/TABLE/ /var/www/html/TABLE/table_activity.cgi
-  chown apache:apache /var/log/table.log /var/log/blocking.log /var/www/html/TABLE/ /var/www/html/TABLE/table_activity.cgi
+  chown apache:apache /var/www/html/TABLE/ /var/www/html/TABLE/table_activity.cgi
 ```
 
 There is a good chance that the free IP Geolocation API that I found is going to stop being free, after releasing this.  Be prepared to find another and edit this script.
@@ -251,6 +252,7 @@ Prepare an Ansible area:
   mkdir hosts
 
   vi hosts/TABLEhosts
+  [TABLEhosts]
   .
   .
   # insert the IP addresses of all participating hosts, here
