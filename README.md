@@ -38,6 +38,8 @@ TABLE is a distributed IDS (Intrusion Detection System) and IPS (Intrusion Preve
 
 Implementation is generally straight-forward to implement on your own network of servers, but LIE is also providing an hourly-updated ipset built from their own implementation involving 7 hosts around the world.
 
+All previous generations of solutions which have led to this (DDoP - Distributed Denial of Packets, FIBN - Firewall ipset Blacklist Network, et al) have been retired and will be removed, soon.  I never properly kept up with their repos as they evolved, anyway.  TABLE is what they all became.
+
 ### Why?:
 
 Network scanning and attacks have proliferated so much that the traffic generated can signifigantly affect the overall bandwidth you have available for legitimate use.
