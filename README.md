@@ -73,7 +73,7 @@ Scenario 1 illustrates an attack on Server 1 by some machine in "The World".
 3) Server 1 reports the details about the attack to the TABLE Server  
 4) TABLE Server makes some quick decisions about where in the world this attack originated, using IP geolocation
 5) TABLE Server initiates an Ansible playbook to reach out to all of the participating servers
-6) Each participating server insert the appropriate subnet into the TABLE_ips ipset
+6) Each participating server inserts the appropriate subnet into the TABLE_ips ipset
 7) All further attacks from this subnet to all participating hosts are stopped
 
 #### Scenario 2:
@@ -86,16 +86,16 @@ Scenario 2 illustrates the extra step required for an atack on a remotely-hosted
 4) Web Repeater relays the attack information back into the TABLE Server 
 5) TABLE Server makes some quick decisions about where in the world this attack originated, using IP geolocation
 6) TABLE Server initiates an Ansible playbook to reach out to all of the participating servers
-7) Each participating server insert the appropriate subnet into the TABLE_ips ipset
+7) Each participating server inserts the appropriate subnet into the TABLE_ips ipset
 8) All further attacks from this subnet to all participating hosts are stopped
 
 ### Hardware Components:
 
 TABLE is distributed among as many hosts as possible.  The more hosts that participate, the quicker TABLE will work to minimize sources of attack.
 
-The diagrams show servers in a personal network (IDN + DMZ) as well as virtualized instances in two different clouds (maybe Linode and AWS).  Hosts in your local network are slightly easier to set up, because they will most likely have direct inward connectivity from the DMZ (De-Militarized Zone) to the TABLE Server in the IDN (Internal Data Network).  Servers hosted outside of the network where the TABLE Server lives will require some trickery to reach the TABLE Server.  A "table_relay.cgi" script has been written in Perl and supplied, but feel free to devise your own method.  Port forwarding is another possibility, but not recommended.
+The diagrams show servers in a personal network (IDN + DMZ) as well as virtualized instances in two different clouds (maybe Linode and AWS).  Hosts in your local network are slightly easier to set up, because they will most likely have direct inward connectivity from the DMZ (De-Militarized Zone) to the TABLE Server in the IDN (Internal Data Network).  Servers hosted outside of the network where the TABLE Server lives will require some trickery to reach the TABLE Server.  A "table_relay.cgi" script has been written in Perl and supplied, but feel free to devise your own method.  Port forwarding is another possibility, but not recommended.  You could also chance hosting the TABLE Server on a Web Server in your DMZ, eliminating the need for connectivity to the IDN.
 
-This is the only hardware really required for this to work.  *nix servers.  If you have separate hardware firewalls, you will need to develop for that.  
+This is the only hardware really required for this to work - *nix servers.  If you have separate hardware firewalls, you will need to develop for that.  
 
 
 ### Software Components:
@@ -138,6 +138,8 @@ You will need the following installed to duplicate this project, although much s
 ## Build Your Own:
 [Table of Contents](#table-of-contents)
 
+We will walk you through an implementation of this, here.  All of the scripts are very simple.  Hate Perl?  Port it to Python and bow to your Indentation Overlords.   Big firewalld fan boi?  Easy peasy to customize for your needs.
+
 ### Hardware:
 [Table of Contents](#table-of-contents)
 
@@ -153,14 +155,18 @@ https://www.leper.org/TABLE/
 
 Directions for how to utilize this ipset are included on that page.
 
+If you do not use/like ipset or iptables, this file is easily massaged to utilize in your favorite firewall solution.
+
 ## Real World Study
 [Table of Contents](#table-of-contents)
 
-A Real-World Study of the Efficiency of the TABLE Solution:
+A real-world study of the efficiency of the TABLE solution is included, here.
 
 Write up my testing, here.   Include all the screenshots of LAVA charts.
 
+Until I get this filled in, just know that during the first 7 days of running TABLE, a 6-hour moving average of attacks dropped from around 20 to 5 attacks per hour.  This was using TABLE on top of previous implemented solutions.  Then, all firewall tables were cleared.  Attacks jumped immediately to over 60 per hour.  Within 3 days, this has dropped by 66% back down near 20 attacks per hour.
 
+All other connectivity on my network is fine. 
 
 
 
