@@ -214,17 +214,107 @@ Restart Apache:
   systemctl restart httpd
 ```
 
+Prepare some log files for writing by apache user:
+```
+  touch /var/log/table.log /var/log/blocking.log
+  chmod 644 /var/log/table.log /var/log/blocking.log
+```
+
+Put the table_activity.cgi script into place:
+```
+  mkdir -p /var/www/html/TABLE/
+  # Copy the table_activity.cgi from this repo into /var/www/html/TABLE/
+  chmod 755 /var/www/html/TABLE/ /var/www/html/TABLE/table_activity.cgi
+  chown apache:apache /var/log/table.log /var/log/blocking.log /var/www/html/TABLE/ /var/www/html/TABLE/table_activity.cgi
+```
+
+There is a good chance that the free IP Geolocation API that I found is going to stop being free, after releasing this.  Be prepared to find another and edit this script.
+
 ##### Ansible:
+
+Install Ansible with:
+```
+  yum -y install ansible
+```
+
+Create a new user for running the Ansible script and SSH key'ing and switch user to it:
+```
+  useradd -c "TABLE User" table
+  passwd table
+  su - table
+```
+
+Prepare an Ansible area:
+```
+  mkdir ansible
+  cd ansible
+  mkdir hosts
+
+  vi hosts/TABLEhosts
+  .
+  .
+  # insert the IP addresses of all participating hosts, here
+  .
+  .
+```
+
+Either transfer the BlockSubnet.yanl file from this repo to ~table/ansible , or build it now:
+```
+  cat<<EOF>BlockSubnet.yaml
+  ---
+  - name: Block IP Subnet
+    hosts: TABLEhosts
+    vars:
+      ansible_ssh_user: 'root'
+      ansible_port: '22'
+      my_command: "{{ command }}"
+      my_subnet: "{{ subnet }}"
+    tasks:
+    - name: Run the remote table_block script with command line options
+      command: table_block {{ command }} {{ subnet }}
+      register: output
+    - debug: msg="{{ output.stdout_lines }}"
+    - debug: msg="{{ output.stderr_lines }}"
+  EOF
+```
+
 
 ##### SSH:
 
+Switch user to the table user, if you are not already in a table user shell:
+```
+  su - table
+```
+
+Much can be tweaked here, but let us keep this very simple.  Generate a password-less keypair:
+```
+  ssh-keygen  
+  # Just hit <RETURN> for no password, for this example
+```
+
+Propagate your public keys to root user of every participating server:
+```
+  ssh-copy-id -p 22 root@Server1
+  ssh-copy-id -p 22 root@Server2
+  ssh-copy-id -p 22 root@WebRepeater
+```
+
+
 ##### SUDO:
+
+
 
 ##### Perl:
 
+To use the supplied script, you will need the CGI Perl module:
+```
+  yum -y install perl-CGI
+```
 
 
 #### Server 1:
+
+
 
 #### Server 2:
 
