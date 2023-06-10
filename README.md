@@ -27,6 +27,9 @@ A distributed, ham-fisted, attack sensoring, IPS/IDS/firewall solution.  Take yo
 	* [Software](#software)
 * [LIE TABLE_ips](#lie-table_ips)
 * [Real World Study](#real-world-study)
+* [Caveats and Dangers](#caveats-and-dangers)
+
+
 
 ## Description:
 [Table of Contents](#table-of-contents)
@@ -38,6 +41,7 @@ Implementation is generally straight-forward to implement on your own network of
 ### Why?:
 
 Network scanning and attacks have proliferated so much that the traffic generated can signifigantly affect the overall bandwidth you have available for legitimate use.
+
 
 ## Theory of Operation:
 [Table of Contents](#table-of-contents)
@@ -105,9 +109,9 @@ The following have been developed to help you to get this set-up on your own net
 * table_reporter - This is a bash script that is placed on every participating server to report attacks
 * table_block - This is a bash script that is placed on every participating server to finally block the attacker
 * table_activity.cgi - This is a Perl CGI script hosted on the TABLE Server which listens for table_reporter reports, makes decisions about the attacking subnet, then runs the table_blocknet script
-* table_relay.cgi - This is a Perl CGI script hosted on the Web Repeater which listens for table_repeater reports, then relays those inwardly to the table_activity.cgi script on the TABLE Server
+* table_relay.cgi - This is a Perl CGI script hosted on the Web Repeater which listens for table_reporter reports, then relays those inwardly to the table_activity.cgi script on the TABLE Server
 * table_blocknet - This is a bash script that is executed on the TABLE Server to kick off the BlockSubnet.yaml Ansible playbook
-* BlockSubnet.yaml - This is an Ansible playbook which will connect to all participating machines and execute their local table_block scripts to finally block the attackign subnet.  This is done via SSH keys in my scenario, but feel free to change that.
+* BlockSubnet.yaml - This is an Ansible playbook which will connect to all participating machines and execute their local table_block scripts to finally block the attacking subnet.  This is done via SSH keys in my scenario, but feel free to change that.
 * portsentry-leper-1.2.317.005.tgz - A customized release of the old portsentry tool, from before Psionic sold out to Cisco.  This is what is being used to detect the attacks on every server and execute the table_reporter scripts.  There are many other ways, but this is supplied for you.
 
 You will understand, of course, if I need to cleanse all of this a bit to safely share all of this publically.  It will likely require effort on your part to dirty it back up for your own environment.  But, the general procedure will be provided, here.
@@ -117,10 +121,14 @@ You will understand, of course, if I need to cleanse all of this a bit to safely
     This is a code block
 ```
 
-
 ### Other Ideas:
 
-List some other expansion or customization ideas for other, here.
+List some other expansion or customization ideas, here.
+
+* Build a dedicated TABLE network fully in a cloud, dropping off the ipset for retreival and use elsewhere
+* More strategic virtual host placement to study in more detail the most likely sources of attack in other locations in the world
+* Easy integration with fail2ban for another layer of valid attack detection on legitimate, non-honeypot ports
+* World heat maps of attacks through the ages (nothing says you have to actually block them)
 
 ## Requirements:
 [Table of Contents](#table-of-contents)
@@ -134,6 +142,8 @@ You will need the following installed to duplicate this project, although much s
 * Perl
 * Ansible
 * .. more to come ... 
+
+
 
 ## Build Your Own:
 [Table of Contents](#table-of-contents)
@@ -157,6 +167,8 @@ Directions for how to utilize this ipset are included on that page.
 
 If you do not use/like ipset or iptables, this file is easily massaged to utilize in your favorite firewall solution.
 
+
+
 ## Real World Study
 [Table of Contents](#table-of-contents)
 
@@ -169,12 +181,13 @@ Until I get this filled in, just know that during the first 7 days of running TA
 All other connectivity on my network is fine. 
 
 
+## Caveats and Dangers
+[Table of Contents](#table-of-contents)
+
+Of course, there is always a bit of risk when taking such drastic pro-active measures.  Here are some points to keep in mind:
+
+* You could just use iptables (or other tools) to watch for all port scans, but beware that SYN packets are much more easily spoofed than completed socket connections in TCP.  Still... these connection can also be spoofed.  MAKE A GOOD WHITELIST!  Include uplinks through your provider(s) in it.
+* It is very highly recommended that you never take counter-offensive measures.  Do not taunt, do not back-hack nor scan.   It should be enough to know that some automaed bot in some subnet found you.   If you begin to provoke them, you will eventually experience much more trouble than this solution can protect you from.
 
 
-
-
-
-
-
-
-
+EOT
