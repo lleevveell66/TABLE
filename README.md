@@ -119,10 +119,6 @@ The following have been developed to help you to get this set-up on your own net
 You will understand, of course, if I need to cleanse all of this a bit to safely share all of this publically.  It will likely require effort on your part to dirty it back up for your own environment.  But, the general procedure will be provided, here.
 
 
-```
-    This is a code block
-```
-
 ### Other Ideas:
 
 List some other expansion or customization ideas, here.
@@ -152,11 +148,91 @@ You will need the following installed to duplicate this project, although much s
 
 We will walk you through an implementation of this, here.  All of the scripts are very simple.  Hate Perl?  Port it to Python and bow to your Indentation Overlords.   Big firewalld fan boi?  Easy peasy to customize for your needs.
 
+I only run RHEL variants in my environment, so you are going to get "the RedHat way".  If you are not capable of translating things into apt, pkg, etc., then you maybe should not be trying to implement this solution quite yet.
+
 ### Hardware:
 [Table of Contents](#table-of-contents)
 
+Again, the more *nix servers participating in this distributed solution, the better.  And, basic segregation of the network is always recommended, but not essential for this to function.  We will presume you have at least four (4) servers stood up for this example:
+
+* TABLE Server
+* Server 1 on your DMZ
+* Server 2 in someone else's cloud
+* Web Repeater
+
 ### Software:
 [Table of Contents](#table-of-contents)
+
+The following assumptions are made for this example:
+
+* You have a web server installed and functioning on TABLES Server and Web Repeater.  Apache is used in the example.
+* You have replaced firewalld with iptables, everywhere.  (See below for how to do that, if you want to)
+* You have functioning sshd configured everywhere.  We will show how to go the password-less key'ed way.
+* You have a working sudo implementation.  Apache user will need to run the script as a different user.
+
+#### Replacing Firewalld with Iptables
+
+With easy customization, TABLE can work with any firewall management system.  We will be using iptables for this example, however.   If you would like to drop that firewalld and get back to iptables, here is the best way in RHEL:
+
+```
+  yum -y install iptables-services
+  systemctl stop firewalld
+  systemctl start iptables
+  # systemctl start ip6tables     # If you have implemented IPv6 - I have not
+  systemctl disable firewalld
+  systemctl mask firewalld
+  systemctl enable iptables
+  # systemctl enable ip6tables    # If you have implemented IPv6 - I have not
+```
+
+#### TABLE Server:
+
+##### Apache:
+
+Enable and start the Apache web server:
+```
+  systemctl enable httpd --now
+```
+
+Configure to allow .cgi scripts to be executed in any directory (you can fine-tune this via htaccess, if you know how):
+```
+  vi /etc/httpd/conf/httpd.conf
+  .
+  .
+  # Options Indexes FollowSymLinks
+  Options Indexes FollowSymLinks ExecCGI
+  .
+  .
+  # AddHandler cgi-script .cgi
+  AddHandler cgi-script .cgi
+  .
+  .
+```
+
+Restart Apache:
+```
+  systemctl restart httpd
+```
+
+##### Ansible:
+
+##### SSH:
+
+##### SUDO:
+
+##### Perl:
+
+
+
+#### Server 1:
+
+#### Server 2:
+
+#### Web Repeater:
+
+```
+    This is a code block
+```
 
 ## LIE TABLE_ips
 [Table of Contents](#table-of-contents)
